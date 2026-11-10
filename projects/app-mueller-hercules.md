@@ -1,0 +1,55 @@
+# Projeto: App - Mueller e Hercules
+
+## Identificação
+
+- **Nome do time:** App - Mueller e Hercules
+- **Cliente:** Mueller e Hércules Motores (app compartilhado)
+- **Bots:** `App - Mueller e Hercules · Gerente`, `· Dev`, `· Revisor` (ids no `registry.json`)
+
+## Loja(s)
+
+O mesmo app (custom app, multi-tenant) roda nas duas lojas:
+
+- `totvsle-mueller.myshopify.com`
+- `totvsle-herculesmotores.myshopify.com`
+
+As duas lojas já estão com o app instalado e funcionando. O deploy atende as duas.
+
+## Repositório
+
+- **Local:** `~/projects/ca-herculesmueller` (`C:\Users\Kariston\projects\ca-herculesmueller`)
+- **GitHub:** `checkstore/app-b2b-connect` (atenção: o nome da pasta local é diferente do nome no GitHub)
+- **Branch base:** `main`
+- **Stack:** app Remix multi-tenant (Shopify), com extensões como `b2b-company-registration` e a Discount Function de desconto por segmento.
+- **Infra:** roda em Docker no servidor, um container por tenant (ex.: `b2b-app-hercules`), com env por tenant (ex.: `.env.hercules`, fora do Git).
+
+## Jira
+
+- **Projetos / prefixos:** `MUEL` **e** `HCL`
+- **Filtro do Gerente:** `project in (MUEL, HCL) AND status = "Para fazer" AND assignee = "Kariston Stefane"`, considerando **só as tarefas que mexem no app**.
+- **Roteamento:** o Gerente separa por assunto: tarefa de app (painel do app, extensões, Functions, integração SAP, cadastro B2B, descontos) fica com este time; tarefa de tema fica com Tema - Mueller ou Tema - Hercules. Quando não estiver claro, o Mestre decide.
+- Uma mesma entrega pode atender uma tarefa MUEL e uma HCL (ex.: MUEL-270 + HCL-236). Nesse caso faz-se **um único desenvolvimento** e as horas e transições são lançadas **nas duas tarefas**.
+
+## Contatos
+
+- A CONFIRMAR
+
+## Convenções
+
+- Branch: `feat/<chave-minúscula>-<slug>` quando atende mais de uma tarefa (ex.: `feat/muel-270-hcl-236-desconto-segmento`), ou `feat|fix/<CHAVE>-<n>`.
+- PR contra `main`, com roteiro de teste e pendências pós-deploy (escopos novos, setup por loja, QA em cada loja).
+
+## Regras específicas
+
+- **Deploy e release** (`shopify app deploy`) ficam com o Kariston e liberam a versão nas duas lojas ao mesmo tempo. Nunca rodar sem pedido.
+- Mudança de escopo exige reautorização do app nas duas lojas: sempre listar no PR.
+- Configurações por loja (discount automático, metafields de config) precisam ser criadas em **cada** loja.
+- Segmentos B2B ficam em metafields da Company Location: `checkstore.regional`, `checkstore.regiao`, `checkstore.setor`, `checkstore.equipe`, `checkstore.grupo_clientes`.
+- Desconto por segmento (MUEL-270/HCL-236): grupos por metafield de segmento + valores, cada um com uma %; desconto de **pedido**; acumula com as tabelas de preço (aplica por cima do catálogo); se a location cair em mais de um grupo, vale o **maior**. Lojas 100% B2B, sem cupons.
+- Cadastro B2B (`b2b-company-registration`): consulta o SAP para preencher o endereço da empresa; controlado pela env `SAP_ADDRESS_CONSULT_ENABLED` por tenant (`false` desliga).
+- Nunca commitar arquivos `.env` nem tokens do SAP/Shopify.
+
+## Pendências conhecidas
+
+- PR #75 (MUEL-270/HCL-236): ajustes do review do victorcesc em andamento; depois merge, deploy, reautorização (`write_discounts`), setup por loja e QA. Teto de % por grupo (hoje 100%) a decidir pelo Kariston.
+- Cadastro B2B ainda gerando empresas com "Endereço Pendente" na Hércules: consulta SAP estava desligada no tenant (`disabled for this tenant`) e depende da liberação do `IV_CONS_ENDERECO` no SAP.
