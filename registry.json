@@ -1,0 +1,116 @@
+{
+  "$comment": "Mapa projeto -> ids dos bots. Mantido pelo Mestre. Ids ficam null ate os bots serem criados.",
+  "synced_commit": null,
+  "shared": {
+    "mestre": "782dbb7d-7ebf-4570-b3dd-eece7c81b2ef",
+    "especialista_shopify": "31a088d9-f6ff-4340-b32b-60ec69376d30",
+    "reportador_de_horas": "b4281eae-73f9-4115-abfc-ceb834d3e2fa"
+  },
+  "legacy_single_team": {
+    "$comment": "Bots do time unico atual. Serao desativados ou reaproveitados apos a criacao dos times por projeto.",
+    "gerente": "38d5f382-717e-4d40-8e2b-8f7ef5f841b1",
+    "dev": "9ab9d85f-17d9-48df-9250-45094d380a3e",
+    "revisor": "d3e1d8b8-9db5-49d3-af89-4924b45f9db6"
+  },
+  "projects": {
+    "tema-mueller": {
+      "name": "Tema - Mueller",
+      "file": "projects/tema-mueller.md",
+      "jira": [
+        "MUEL"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "forwards_to_mestre": [
+        "MUEL"
+      ],
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
+    },
+    "tema-hercules": {
+      "name": "Tema - Hercules",
+      "file": "projects/tema-hercules.md",
+      "jira": [
+        "HCL"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "forwards_to_mestre": [
+        "HCL"
+      ],
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
+    },
+    "app-mueller-hercules": {
+      "name": "App - Mueller e Hercules",
+      "file": "projects/app-mueller-hercules.md",
+      "jira": [
+        "MUEL",
+        "HCL"
+      ],
+      "review": {
+        "revisor": "github",
+        "revisor_github": "victorcesc",
+        "deploy": "victorcesc"
+      },
+      "forwards_to_mestre": [],
+      "routing": "Recebe do Mestre apenas tarefas MUEL/HCL classificadas como App pelo conteudo e validadas pelo Kariston; nao encaminha tarefas por conta propria.",
+      "bots": {
+        "gerente": null,
+        "dev": null
+      }
+    },
+    "tema-made-in-guarda": {
+      "name": "Tema - Made in Guarda",
+      "file": "projects/tema-made-in-guarda.md",
+      "jira": [
+        "GDA"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "forwards_to_mestre": [
+        "GDA"
+      ],
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
+    },
+    "tema-nuora": {
+      "name": "Tema - Nuora",
+      "file": "projects/tema-nuora.md",
+      "jira": [
+        "NU"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "forwards_to_mestre": [
+        "NU"
+      ],
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
+    }
+  }
+}
