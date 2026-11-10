@@ -29,7 +29,7 @@
 
 - **Projeto / prefixo:** `MUEL`
 - **Filtro do Gerente:** `project = MUEL AND status = "Para fazer" AND assignee = "Kariston Stefane"`
-- **Roteamento:** tarefas MUEL que mexem no **app B2B** (`app-b2b-connect` / `ca-herculesmueller`) vão para o time **App - Mueller e Hercules**. Este time fica só com o que é tema. Na dúvida, o Mestre decide.
+- **Roteamento (ver "Roteamento MUEL/HCL: app x tema" em `shared/workflow.md`):** este Gerente é o **único** que encaminha as tarefas `MUEL` ao Mestre, **todas**, inclusive as que parecerem de app. Ele não assume nenhuma pela chave: o Mestre classifica como App ou Tema pelo conteúdo, valida com o Kariston e só então envia ao time escolhido. Este time só trabalha nas tarefas classificadas como Tema.
 
 ## Contatos
 

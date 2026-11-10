@@ -24,6 +24,9 @@
         "revisor_github": null,
         "deploy": "Kariston"
       },
+      "forwards_to_mestre": [
+        "MUEL"
+      ],
       "bots": {
         "gerente": null,
         "dev": null,
@@ -41,6 +44,9 @@
         "revisor_github": null,
         "deploy": "Kariston"
       },
+      "forwards_to_mestre": [
+        "HCL"
+      ],
       "bots": {
         "gerente": null,
         "dev": null,
@@ -59,6 +65,8 @@
         "revisor_github": "victorcesc",
         "deploy": "victorcesc"
       },
+      "forwards_to_mestre": [],
+      "routing": "Recebe do Mestre apenas tarefas MUEL/HCL classificadas como App pelo conteudo e validadas pelo Kariston; nao encaminha tarefas por conta propria.",
       "bots": {
         "gerente": null,
         "dev": null
@@ -75,6 +83,9 @@
         "revisor_github": null,
         "deploy": "Kariston"
       },
+      "forwards_to_mestre": [
+        "GDA"
+      ],
       "bots": {
         "gerente": null,
         "dev": null,
@@ -92,6 +103,9 @@
         "revisor_github": null,
         "deploy": "Kariston"
       },
+      "forwards_to_mestre": [
+        "NU"
+      ],
       "bots": {
         "gerente": null,
         "dev": null,

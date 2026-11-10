@@ -34,9 +34,13 @@ aiagents/
 |---|---|---|---|---|
 | Tema - Mueller | `projects/tema-mueller.md` | MUEL | `checkstore/mueller` | bot |
 | Tema - Hercules | `projects/tema-hercules.md` | HCL | `checkstore/hercules` | bot |
-| App - Mueller e Hercules | `projects/app-mueller-hercules.md` | MUEL + HCL (tarefas de app) | `checkstore/app-b2b-connect` | GitHub: `victorcesc` |
+| App - Mueller e Hercules | `projects/app-mueller-hercules.md` | MUEL + HCL (só tarefas classificadas como App pelo Mestre) | `checkstore/app-b2b-connect` | GitHub: `victorcesc` |
 | Tema - Made in Guarda | `projects/tema-made-in-guarda.md` | GDA | `checkstore/made-in-guarda` | bot |
 | Tema - Nuora | `projects/tema-nuora.md` | NU | `checkstore/nuoracosmetic` | bot |
+
+### Roteamento MUEL/HCL
+
+O app B2B não é um projeto separado no Jira e as labels não são confiáveis: as tarefas `MUEL`/`HCL` são classificadas como **App** ou **Tema** **pelo conteúdo**. Os Gerentes do Tema - Mueller (`MUEL`) e do Tema - Hercules (`HCL`) encaminham **todas** as tarefas da sua chave ao Mestre; o Gerente do App não encaminha, só recebe do Mestre. O Mestre classifica, mostra a classificação e o motivo ao Kariston e, na dúvida, pergunta. Só depois da validação a tarefa vai ao time. Detalhes em `shared/workflow.md`.
 
 ## Composição dos times
 

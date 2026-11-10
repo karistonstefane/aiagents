@@ -15,6 +15,19 @@
 9. O **Kariston** faz o merge **manualmente**. Ninguém mais faz merge.
 10. Depois do merge, o **Dev** move a tarefa no Jira para **Q/A**.
 
+## Roteamento MUEL/HCL: app x tema
+
+O custom app B2B (`checkstore/app-b2b-connect`, pasta local `ca-herculesmueller`) **não é um projeto separado no Jira**: as tarefas dele chegam como `MUEL` ou `HCL`, junto com as de tema, e as labels do Jira não são confiáveis. Por isso a classificação é feita **pelo conteúdo** da tarefa. O Kariston pediu: "precisamos ter muito cuidado com isso".
+
+1. **Nenhum Gerente assume tarefa pela chave.** Toda tarefa `MUEL` e `HCL` vai primeiro ao **Mestre**.
+2. **Quem encaminha (para não duplicar):** só o Gerente do tema daquela chave encaminha ao Mestre: `MUEL` → Gerente do **Tema - Mueller**; `HCL` → Gerente do **Tema - Hercules**. O Gerente do **App - Mueller e Hercules** **não** encaminha tarefas `MUEL`/`HCL` por conta própria; ele só recebe do Mestre as tarefas já classificadas como App e acompanha essas.
+3. **O Mestre classifica pelo conteúdo** (título, descrição, critérios de aceite, anexos e comentários):
+   - **Sinais de App:** custom app, `app-b2b-connect` / `ca-herculesmueller`, extension, Discount/Shopify Function, checkout extension, SAP/OMS/integração, cadastro B2B de empresas, painel/B2B Connect, webhooks, app proxy.
+   - **Sinais de Tema:** Liquid, sections/blocks, Personalizar, layout, CSS/JS do tema, páginas, templates de produto/coleção.
+4. **Validação com o Kariston:** ao pedir a validação da tarefa, o Mestre **sempre mostra a classificação (App ou Tema) e o motivo**. Se houver **qualquer dúvida**, o Mestre pergunta ao Kariston em vez de decidir. Só depois da validação do Kariston a tarefa vai para o time escolhido.
+5. **Tarefa que mexe nos dois:** fica no time **App**. O Mestre, com a validação do Kariston, abre uma tarefa de follow-up vinculada para o time de tema correspondente.
+6. **Horas:** sempre lançadas na chave original da tarefa. Um desenvolvimento que atende uma tarefa `MUEL` e uma `HCL` lança horas nas duas.
+
 ## Jira: sprint
 
 - Todos os projetos usam a mesma sprint: **"Projetos + Fullcomm"** (o número muda a cada ciclo, ex.: "Projetos + Fullcomm 8").

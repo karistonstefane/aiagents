@@ -34,9 +34,10 @@ O Dev solicita a revisão do Victor no PR (`--add-reviewer victorcesc`) e avisa 
 ## Jira
 
 - **Projetos / prefixos:** `MUEL` **e** `HCL`
-- **Filtro do Gerente:** `project in (MUEL, HCL) AND status = "Para fazer" AND assignee = "Kariston Stefane"`, considerando **só as tarefas que mexem no app**.
-- **Roteamento:** o Gerente separa por assunto: tarefa de app (painel do app, extensões, Functions, integração SAP, cadastro B2B, descontos) fica com este time; tarefa de tema fica com Tema - Mueller ou Tema - Hercules. Quando não estiver claro, o Mestre decide.
-- Uma mesma entrega pode atender uma tarefa MUEL e uma HCL (ex.: MUEL-270 + HCL-236). Nesse caso faz-se **um único desenvolvimento** e as horas e transições são lançadas **nas duas tarefas**.
+- **Filtro do Gerente:** `project in (MUEL, HCL) AND assignee = "Kariston Stefane"`, usado **só para acompanhar** as tarefas que o Mestre atribuiu a este time.
+- **Roteamento (ver "Roteamento MUEL/HCL: app x tema" em `shared/workflow.md`):** o app não é um projeto separado no Jira e as labels não são confiáveis, então a classificação é **pelo conteúdo**, feita pelo Mestre e validada pelo Kariston. Este Gerente **não encaminha** tarefas `MUEL`/`HCL` ao Mestre por conta própria (quem encaminha são os Gerentes do Tema - Mueller e do Tema - Hercules) e **nunca assume** uma tarefa pela chave. Ele só recebe do Mestre as tarefas já classificadas como App e acompanha essas (comentários, prioridade, vencimento).
+- **Tarefa que mexe em app e tema:** fica neste time; o Mestre, com a validação do Kariston, abre um follow-up vinculado para o time de tema.
+- **Horas:** sempre na chave original. Uma mesma entrega pode atender uma tarefa MUEL e uma HCL (ex.: MUEL-270 + HCL-236): faz-se **um único desenvolvimento** e as horas e transições são lançadas **nas duas tarefas**.
 
 ## Contatos
 
