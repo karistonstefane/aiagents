@@ -16,13 +16,13 @@
 
 - **Local:** `~/projects/nuoracosmetic` (`C:\Users\Kariston\projects\nuoracosmetic`)
 - **GitHub:** `checkstore/nuoracosmetic`
-- **Branch base:** `master`
+- **Branch base:** `master` (o tema publicado está conectado à `master`: merge nela afeta a loja)
 
 ## Revisão
 
 - **revisor:** `bot`
 - **revisor_github:** —
-- **deploy:** Kariston
+- **deploy:** Kariston (o merge na `master` publica o tema conectado)
 
 ## Jira
 
@@ -31,7 +31,7 @@
 
 ## Contatos
 
-- A CONFIRMAR
+- Mayara: Gerente de Projetos (GP)
 
 ## Convenções
 

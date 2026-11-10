@@ -15,6 +15,10 @@
 9. O **Kariston** faz o merge **manualmente**. Ninguém mais faz merge.
 10. Depois do merge, o **Dev** move a tarefa no Jira para **Q/A**.
 
+## Jira: sprint
+
+- Todos os projetos usam a mesma sprint: **"Projetos + Fullcomm"** (o número muda a cada ciclo, ex.: "Projetos + Fullcomm 8").
+
 ## Regras fixas
 
 - O Gerente **não atua em código**.

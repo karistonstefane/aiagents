@@ -30,7 +30,6 @@
 - **Projeto / prefixo:** `MUEL`
 - **Filtro do Gerente:** `project = MUEL AND status = "Para fazer" AND assignee = "Kariston Stefane"`
 - **Roteamento:** tarefas MUEL que mexem no **app B2B** (`app-b2b-connect` / `ca-herculesmueller`) vão para o time **App - Mueller e Hercules**. Este time fica só com o que é tema. Na dúvida, o Mestre decide.
-- **Sprint de referência:** "Projetos + Fullcomm" (A CONFIRMAR se é comum a todos os projetos)
 
 ## Contatos
 
