@@ -4,7 +4,7 @@
 
 1. **Gerente** monitora as tarefas do Jira do seu projeto na coluna **Para fazer** atribuídas ao Kariston.
 2. Ao achar uma tarefa nova, o **Gerente** envia ao **Mestre** para refinamento (link, tipo, prioridade, épico, reporter e resumo, sem segredos).
-3. O **Mestre** refina a tarefa. Para qualquer dúvida Shopify, ou para ajudar no refinamento, consulta o **Especialista Shopify**.
+3. O **Mestre** refina a tarefa. Antes de propor uma solução, o Mestre lê o **arquivo de arquitetura do projeto** (`projects/<slug>.arquitetura.md`). Para qualquer dúvida Shopify, ou para ajudar no refinamento, consulta o **Especialista Shopify**, que também lê o arquivo de arquitetura antes de recomendar.
 4. O **Mestre** valida com o **Kariston** se a tarefa está apta a iniciar e leva as perguntas em aberto.
 5. **Somente com a aprovação do Kariston**, o Mestre segue para a execução:
    - se a tarefa tem **impacto visual/UI** e o projeto tem `designer: sim`, o Mestre envia primeiro ao **Designer** do time, com o link do Figma quando existir;
@@ -30,6 +30,15 @@ O custom app B2B (`checkstore/app-b2b-connect`, pasta local `ca-herculesmueller`
 4. **Validação com o Kariston:** ao pedir a validação da tarefa, o Mestre **sempre mostra a classificação (App ou Tema) e o motivo**. Se houver **qualquer dúvida**, o Mestre pergunta ao Kariston em vez de decidir. Só depois da validação do Kariston a tarefa vai para o time escolhido.
 5. **Tarefa que mexe nos dois:** fica no time **App**. O Mestre, com a validação do Kariston, abre uma tarefa de follow-up vinculada para o time de tema correspondente.
 6. **Horas:** sempre lançadas na chave original da tarefa. Um desenvolvimento que atende uma tarefa `MUEL` e uma `HCL` lança horas nas duas.
+
+## Arquivo de arquitetura do projeto
+
+Cada projeto tem `projects/<slug>.arquitetura.md` (modelo em `templates/arquitetura.md`) com visão geral, stack, integrações, apps/extensões, dados, módulos principais, decisões de arquitetura, armadilhas e histórico.
+
+- **Quem lê:** o Mestre e o Especialista Shopify no refinamento, antes de propor solução; o Designer antes de propor diretrizes; o Dev antes de implementar.
+- **Quem atualiza:** o Dev, **no mesmo ciclo do PR** (como o arquivo vive neste repositório, ele abre um PR complementar no `aiagents` junto com o PR do projeto e cita os dois), sempre que a mudança afetar a arquitetura (nova integração, metafield, section/block, extensão, Function, decisão).
+- **Quem confere:** o Revisor (bot). Nos projetos com revisor no GitHub, o Dev declara no PR se o arquivo foi atualizado ou por que não foi necessário.
+- **Decisão (2026-11-10):** o Kariston escolheu manter um arquivo de arquitetura por projeto **em vez de um bot Arquiteto**. Um bot Arquiteto pode ser reavaliado se os arquivos ficarem grandes demais ou se as soluções propostas continuarem errando por falta de contexto.
 
 ## Jira: sprint
 

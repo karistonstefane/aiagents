@@ -36,6 +36,10 @@ Com `revisor: github` não é criado bot Revisor: o Dev solicita review no PR ao
 
 Com `designer: sim`, tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Use `não informado` quando não souber se existe Figma.
 
+## Arquitetura
+
+- **Arquivo:** `projects/<slug>.arquitetura.md` (criado a partir de `templates/arquitetura.md`)
+
 ## Jira
 
 - **Projeto / prefixo:** `<PREFIXO>`

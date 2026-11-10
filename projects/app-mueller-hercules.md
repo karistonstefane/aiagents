@@ -38,6 +38,10 @@ O Dev solicita a revisão do Victor no PR (`--add-reviewer victorcesc`) e avisa 
 
 O Designer deste time **não segue padrões de tema**: o foco é a UI do admin do app (Shopify **Polaris** / padrões de **App Home**) e a UI de extensões de storefront/checkout, seguindo as diretrizes do Polaris e das extensões da Shopify. As "Diretrizes de design" devem indicar os componentes Polaris a usar, estados (loading, vazio, erro), mensagens e responsividade do admin.
 
+## Arquitetura
+
+- **Arquivo:** [`projects/app-mueller-hercules.arquitetura.md`](./app-mueller-hercules.arquitetura.md). Leia antes de refinar, desenhar ou implementar; o Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura.
+
 ## Jira
 
 - **Projetos / prefixos:** `MUEL` **e** `HCL`

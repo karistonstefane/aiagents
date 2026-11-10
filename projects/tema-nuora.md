@@ -31,6 +31,10 @@
 
 Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Sem Figma, o Designer segue o padrão existente do tema.
 
+## Arquitetura
+
+- **Arquivo:** [`projects/tema-nuora.arquitetura.md`](./tema-nuora.arquitetura.md). Leia antes de refinar, desenhar ou implementar; o Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura.
+
 ## Jira
 
 - **Projeto / prefixo:** `NU`

@@ -20,12 +20,18 @@ aiagents/
 │   └── agentes-compartilhados.md  # Mestre, Especialista Shopify, Reportador
 ├── projects/                  # um arquivo por time/projeto
 │   ├── tema-mueller.md
+│   ├── tema-mueller.arquitetura.md
 │   ├── tema-hercules.md
+│   ├── tema-hercules.arquitetura.md
 │   ├── app-mueller-hercules.md
+│   ├── app-mueller-hercules.arquitetura.md
 │   ├── tema-made-in-guarda.md
-│   └── tema-nuora.md
+│   ├── tema-made-in-guarda.arquitetura.md
+│   ├── tema-nuora.md
+│   └── tema-nuora.arquitetura.md
 ├── templates/
-│   └── project.md             # modelo para projeto novo
+│   ├── project.md             # modelo para projeto novo
+│   └── arquitetura.md         # modelo do arquivo de arquitetura do projeto
 └── registry.json              # mapa projeto → ids dos bots criados (mantido pelo Mestre)
 ```
 
@@ -59,6 +65,12 @@ Todo time tem `<Time> · Gerente` e `<Time> · Dev`. Os demais dependem da confi
 
 A mesma seção define **quem faz o deploy** (`deploy`).
 
+## Arquivo de arquitetura por projeto
+
+Cada projeto tem `projects/<slug>.arquitetura.md`: visão geral, stack, integrações, apps/extensões, dados, módulos principais, decisões, armadilhas e histórico. O Mestre e o Especialista Shopify leem antes de propor solução, o Designer antes de propor diretrizes e o Dev antes de implementar. O Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura, e o Revisor confere.
+
+Em 2026-11-10 o Kariston escolheu este arquivo **em vez de um bot Arquiteto**. O bot pode ser reavaliado se os arquivos ficarem grandes demais ou se as soluções continuarem errando.
+
 ## Como a instrução de um bot é composta
 
 A instrução final de cada bot é a concatenação, nesta ordem:
@@ -68,6 +80,8 @@ A instrução final de cada bot é a concatenação, nesta ordem:
 3. `shared/agentes-compartilhados.md`
 4. `roles/<papel>.md` (gerente, dev, designer ou revisor; o designer só existe quando `designer: sim` e o revisor só quando `revisor: bot`)
 5. `projects/<projeto>.md`
+
+O arquivo `projects/<projeto>.arquitetura.md` **não** é concatenado na instrução (para não crescer demais): os bots o leem sob demanda, como indicado no fluxo.
 
 Em caso de conflito, vale o mais específico: o arquivo do projeto prevalece sobre o papel, e o papel prevalece sobre o `shared/`. As regras de segurança (sem merge, sem deploy sem pedido, sem credenciais) **nunca** são sobrescritas.
 
@@ -88,8 +102,9 @@ Só o conteúdo da `main` vale. Branches e PRs abertos não são aplicados.
 ## Projeto novo (onboarding)
 
 1. Copiar `templates/project.md` para `projects/<tipo>-<cliente>.md` e preencher, incluindo a seção **Revisão** (`revisor: bot | github`, `revisor_github`, `deploy`) e a seção **Design** (`designer: sim | não`, `figma`).
-2. Adicionar a entrada do projeto no `registry.json` com os ids em `null` e os blocos `review` e `design` iguais ao do arquivo do projeto. Com `revisor: github`, o campo `bots.revisor` fica ausente; com `designer: não`, o campo `bots.designer` fica ausente.
-3. Abrir PR. Depois do merge, o Mestre cria os bots do time com a instrução composta (Gerente e Dev sempre; Designer só com `designer: sim`; Revisor só com `revisor: bot`), preenche os ids no `registry.json` e faz um teste rápido de ponta a ponta (Gerente lê o Jira, Dev localiza o repositório, Revisor acessa o PR ou o Dev confirma que consegue pedir review ao usuário do GitHub).
+2. Criar `projects/<tipo>-<cliente>.arquitetura.md` a partir de `templates/arquitetura.md`, com o que já se sabe do repositório (o resto como `não informado`).
+3. Adicionar a entrada do projeto no `registry.json` (incluindo `architecture`) com os ids em `null` e os blocos `review` e `design` iguais ao do arquivo do projeto. Com `revisor: github`, o campo `bots.revisor` fica ausente; com `designer: não`, o campo `bots.designer` fica ausente.
+4. Abrir PR. Depois do merge, o Mestre cria os bots do time com a instrução composta (Gerente e Dev sempre; Designer só com `designer: sim`; Revisor só com `revisor: bot`), preenche os ids no `registry.json` e faz um teste rápido de ponta a ponta (Gerente lê o Jira, Dev localiza o repositório, Revisor acessa o PR ou o Dev confirma que consegue pedir review ao usuário do GitHub).
 
 ## Regras que valem para todos
 
