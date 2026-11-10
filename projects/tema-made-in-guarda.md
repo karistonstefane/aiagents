@@ -8,15 +8,21 @@
 
 ## Loja(s)
 
-- **Loja:** A CONFIRMAR (`*.myshopify.com`)
-- **Domínio:** A CONFIRMAR (DNS gerenciado no painel da SAN Internet / Cloud)
-- **Tema publicado / base:** A CONFIRMAR
+- **Loja:** `made-in-guarda.myshopify.com`
+- **Domínio:** `madeinguarda.com.br` (DNS gerenciado no painel da SAN Internet / Cloud)
+- **Tema publicado:** "[Check] Produção", conectado à branch `master`
 
 ## Repositório
 
 - **Local:** `~/projects/made-in-guarda` (`C:\Users\Kariston\projects\made-in-guarda`)
 - **GitHub:** `checkstore/made-in-guarda`
-- **Branch base:** `master`
+- **Branch base:** `master` (o tema publicado está conectado à `master`: merge nela afeta a loja)
+
+## Revisão
+
+- **revisor:** `bot`
+- **revisor_github:** —
+- **deploy:** Kariston (o merge na `master` publica o tema conectado)
 
 ## Jira
 
@@ -26,8 +32,8 @@
 
 ## Contatos
 
-- Enrique: reporter das tarefas GDA (papel A CONFIRMAR).
-- Mayara: liberou os acessos ao painel SAN/Cloud (papel A CONFIRMAR).
+- Mayara: Gerente de Projetos (também liberou os acessos ao painel SAN/Cloud).
+- Enrique: auxilia a Gerente de Projetos; reporter das tarefas GDA.
 
 ## Convenções
 

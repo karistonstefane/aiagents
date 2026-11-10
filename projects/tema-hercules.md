@@ -9,15 +9,21 @@
 ## Loja(s)
 
 - **Loja:** `totvsle-herculesmotores.myshopify.com` (loja B2B)
-- **Domínio:** A CONFIRMAR
+- **Domínio:** `herculesenergia.com.br`
 - **Tema publicado:** acompanha a branch `master` do repositório
-- **Plano:** Plus (necessário para o app B2B com Functions; A CONFIRMAR formalmente)
+- **Plano:** Shopify Plus
 
 ## Repositório
 
 - **Local:** `~/projects/hercules` (`C:\Users\Kariston\projects\hercules`)
 - **GitHub:** `checkstore/hercules`
 - **Branch base:** `master` (o tema publicado acompanha a `master`: merge nela afeta a loja)
+
+## Revisão
+
+- **revisor:** `bot`
+- **revisor_github:** —
+- **deploy:** Kariston (o merge na `master` publica o tema conectado)
 
 ## Jira
 
@@ -27,7 +33,7 @@
 
 ## Contatos
 
-- A CONFIRMAR
+- Charline Lima: Gerente de Projetos (GP)
 
 ## Convenções
 

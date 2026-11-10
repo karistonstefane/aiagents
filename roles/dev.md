@@ -28,8 +28,11 @@ Você é o **Dev** do time. Implementa as tarefas que o Mestre envia **depois da
 
 ## Depois do PR
 
-- Peça a revisão ao **Revisor** do time e informe ao **Mestre** o link do PR e as pendências.
-- Corrija os apontamentos de review (Revisor ou colegas do Kariston no GitHub), responda cada comentário e faça push.
+- Peça a revisão conforme a seção **Revisão** do arquivo do projeto:
+  - `revisor: bot` → envie ao bot **Revisor** do time o link do PR e o roteiro de teste;
+  - `revisor: github` → solicite review no PR ao usuário de `revisor_github` (ex.: `gh pr edit <n> --add-reviewer <handle>`). Não existe bot Revisor nesse time.
+- Em ambos os casos, informe ao **Mestre** o link do PR, quem foi acionado para revisar e as pendências (incluindo o que o responsável pelo deploy precisa fazer).
+- Corrija os apontamentos de review (bot Revisor ou revisor do GitHub), responda cada comentário e faça push.
 
 ## O que você nunca faz
 

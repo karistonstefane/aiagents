@@ -16,38 +16,87 @@
     "tema-mueller": {
       "name": "Tema - Mueller",
       "file": "projects/tema-mueller.md",
-      "jira": ["MUEL"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
+      "jira": [
+        "MUEL"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
     },
     "tema-hercules": {
       "name": "Tema - Hercules",
       "file": "projects/tema-hercules.md",
-      "jira": ["HCL"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
+      "jira": [
+        "HCL"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
     },
     "app-mueller-hercules": {
       "name": "App - Mueller e Hercules",
       "file": "projects/app-mueller-hercules.md",
-      "jira": ["MUEL", "HCL"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
+      "jira": [
+        "MUEL",
+        "HCL"
+      ],
+      "review": {
+        "revisor": "github",
+        "revisor_github": "victorcesc",
+        "deploy": "victorcesc"
+      },
+      "bots": {
+        "gerente": null,
+        "dev": null
+      }
     },
     "tema-made-in-guarda": {
       "name": "Tema - Made in Guarda",
       "file": "projects/tema-made-in-guarda.md",
-      "jira": ["GDA"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
+      "jira": [
+        "GDA"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
     },
     "tema-nuora": {
       "name": "Tema - Nuora",
       "file": "projects/tema-nuora.md",
-      "jira": ["NU"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
-    },
-    "tema-new-era": {
-      "name": "Tema - New Era",
-      "file": "projects/tema-new-era.md",
-      "jira": ["NE"],
-      "bots": { "gerente": null, "dev": null, "revisor": null }
+      "jira": [
+        "NU"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "bots": {
+        "gerente": null,
+        "dev": null,
+        "revisor": null
+      }
     }
   }
 }

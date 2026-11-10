@@ -4,7 +4,7 @@
 
 - **Nome do time:** App - Mueller e Hercules
 - **Cliente:** Mueller e Hércules Motores (app compartilhado)
-- **Bots:** `App - Mueller e Hercules · Gerente`, `· Dev`, `· Revisor` (ids no `registry.json`)
+- **Bots:** `App - Mueller e Hercules · Gerente` e `· Dev` (ids no `registry.json`). **Sem bot Revisor**: a revisão é feita no GitHub pelo Victor.
 
 ## Loja(s)
 
@@ -13,7 +13,7 @@ O mesmo app (custom app, multi-tenant) roda nas duas lojas:
 - `totvsle-mueller.myshopify.com`
 - `totvsle-herculesmotores.myshopify.com`
 
-As duas lojas já estão com o app instalado e funcionando. O deploy atende as duas.
+Ambas no plano Shopify Plus. As duas lojas já estão com o app instalado e funcionando. O deploy atende as duas.
 
 ## Repositório
 
@@ -22,6 +22,14 @@ As duas lojas já estão com o app instalado e funcionando. O deploy atende as d
 - **Branch base:** `main`
 - **Stack:** app Remix multi-tenant (Shopify), com extensões como `b2b-company-registration` e a Discount Function de desconto por segmento.
 - **Infra:** roda em Docker no servidor, um container por tenant (ex.: `b2b-app-hercules`), com env por tenant (ex.: `.env.hercules`, fora do Git).
+
+## Revisão
+
+- **revisor:** `github`
+- **revisor_github:** `victorcesc` (Victor)
+- **deploy:** Victor (`victorcesc`). Nem o Dev nem o Kariston fazem o deploy deste app.
+
+O Dev solicita a revisão do Victor no PR (`--add-reviewer victorcesc`) e avisa o Mestre. Os apontamentos do Victor são corrigidos pelo Dev, que responde cada comentário no PR.
 
 ## Jira
 
@@ -32,7 +40,8 @@ As duas lojas já estão com o app instalado e funcionando. O deploy atende as d
 
 ## Contatos
 
-- A CONFIRMAR
+- Charline Lima: Gerente de Projetos (GP)
+- Victor (`victorcesc`): revisor no GitHub e responsável pelos deploys
 
 ## Convenções
 
@@ -41,7 +50,7 @@ As duas lojas já estão com o app instalado e funcionando. O deploy atende as d
 
 ## Regras específicas
 
-- **Deploy e release** (`shopify app deploy`) ficam com o Kariston e liberam a versão nas duas lojas ao mesmo tempo. Nunca rodar sem pedido.
+- **Deploy e release** (`shopify app deploy`) ficam com o **Victor** e liberam a versão nas duas lojas ao mesmo tempo. Os bots nunca fazem deploy; no PR, liste o que o Victor precisa fazer no deploy.
 - Mudança de escopo exige reautorização do app nas duas lojas: sempre listar no PR.
 - Configurações por loja (discount automático, metafields de config) precisam ser criadas em **cada** loja.
 - Segmentos B2B ficam em metafields da Company Location: `checkstore.regional`, `checkstore.regiao`, `checkstore.setor`, `checkstore.equipe`, `checkstore.grupo_clientes`.
@@ -51,5 +60,5 @@ As duas lojas já estão com o app instalado e funcionando. O deploy atende as d
 
 ## Pendências conhecidas
 
-- PR #75 (MUEL-270/HCL-236): ajustes do review do victorcesc em andamento; depois merge, deploy, reautorização (`write_discounts`), setup por loja e QA. Teto de % por grupo (hoje 100%) a decidir pelo Kariston.
+- PR #75 (MUEL-270/HCL-236): ajustes do review do victorcesc em andamento; depois merge (Kariston), deploy (Victor), reautorização (`write_discounts`), setup por loja e QA. Teto de % por grupo (hoje 100%) a decidir pelo Kariston.
 - Cadastro B2B ainda gerando empresas com "Endereço Pendente" na Hércules: consulta SAP estava desligada no tenant (`disabled for this tenant`) e depende da liberação do `IV_CONS_ENDERECO` no SAP.

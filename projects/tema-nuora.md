@@ -18,6 +18,12 @@
 - **GitHub:** `checkstore/nuoracosmetic`
 - **Branch base:** `master`
 
+## Revisão
+
+- **revisor:** `bot`
+- **revisor_github:** —
+- **deploy:** Kariston
+
 ## Jira
 
 - **Projeto / prefixo:** `NU`

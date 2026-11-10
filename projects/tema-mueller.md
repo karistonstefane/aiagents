@@ -9,15 +9,21 @@
 ## Loja(s)
 
 - **Loja:** `totvsle-mueller.myshopify.com` (loja B2B)
-- **Domínio:** A CONFIRMAR
-- **Tema publicado / base:** A CONFIRMAR
-- **Plano:** Plus (necessário para o app B2B com Functions; A CONFIRMAR formalmente)
+- **Domínio:** ainda não definido
+- **Tema publicado:** "[Check] Mueller", conectado à branch `master`
+- **Plano:** Shopify Plus
 
 ## Repositório
 
 - **Local:** `~/projects/mueller` (`C:\Users\Kariston\projects\mueller`)
 - **GitHub:** `checkstore/mueller`
-- **Branch base:** `master`
+- **Branch base:** `master` (o tema publicado está conectado à `master`: merge nela afeta a loja)
+
+## Revisão
+
+- **revisor:** `bot`
+- **revisor_github:** —
+- **deploy:** Kariston (o merge na `master` publica o tema conectado)
 
 ## Jira
 
@@ -28,13 +34,13 @@
 
 ## Contatos
 
-- A CONFIRMAR
+- Charline Lima: Gerente de Projetos (GP)
 
 ## Convenções
 
 - Branch: `fix/MUEL-<n>` ou `feat/MUEL-<n>` (ex.: `fix/MUEL-271`, PR #34).
 - PR contra `master`, com roteiro de teste e link do preview.
-- Depois do merge, a tarefa pode ir para **homologação do cliente** em vez de Q/A (ex.: MUEL-271). A CONFIRMAR qual é o padrão.
+- Depois do merge, a tarefa vai para **Q/A**.
 
 ## Regras específicas
 
