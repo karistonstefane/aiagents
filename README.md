@@ -2,7 +2,7 @@
 
 Fonte da verdade das instruções dos bots da Checkstore usados pelo Kariston Stefane.
 
-Cada projeto tem o **seu próprio time de bots** (Gerente, Dev e, quando configurado, Revisor), com memória separada, para evitar mistura de contexto entre clientes. Alguns agentes são **compartilhados** por todos os times (Mestre, Especialista Shopify e Reportador de Horas).
+Cada projeto tem o **seu próprio time de bots** (Gerente, Dev, Designer e, quando configurado, Revisor), com memória separada, para evitar mistura de contexto entre clientes. Alguns agentes são **compartilhados** por todos os times (Mestre, Especialista Shopify e Reportador de Horas).
 
 ## Estrutura
 
@@ -12,6 +12,7 @@ aiagents/
 ├── roles/                     # instrução base de cada papel (vale para todo projeto)
 │   ├── gerente.md
 │   ├── dev.md
+│   ├── designer.md
 │   └── revisor.md
 ├── shared/                    # regras comuns a todos os bots
 │   ├── workflow.md            # fluxo de uma tarefa, do Jira ao merge
@@ -30,13 +31,13 @@ aiagents/
 
 ## Times iniciais
 
-| Time | Arquivo | Jira | Repositório | Revisão |
-|---|---|---|---|---|
-| Tema - Mueller | `projects/tema-mueller.md` | MUEL | `checkstore/mueller` | bot |
-| Tema - Hercules | `projects/tema-hercules.md` | HCL | `checkstore/hercules` | bot |
-| App - Mueller e Hercules | `projects/app-mueller-hercules.md` | MUEL + HCL (só tarefas classificadas como App pelo Mestre) | `checkstore/app-b2b-connect` | GitHub: `victorcesc` |
-| Tema - Made in Guarda | `projects/tema-made-in-guarda.md` | GDA | `checkstore/made-in-guarda` | bot |
-| Tema - Nuora | `projects/tema-nuora.md` | NU | `checkstore/nuoracosmetic` | bot |
+| Time | Arquivo | Jira | Repositório | Revisão | Designer |
+|---|---|---|---|---|---|
+| Tema - Mueller | `projects/tema-mueller.md` | MUEL | `checkstore/mueller` | bot | sim |
+| Tema - Hercules | `projects/tema-hercules.md` | HCL | `checkstore/hercules` | bot | sim |
+| App - Mueller e Hercules | `projects/app-mueller-hercules.md` | MUEL + HCL (só tarefas classificadas como App pelo Mestre) | `checkstore/app-b2b-connect` | GitHub: `victorcesc` | sim (Polaris) |
+| Tema - Made in Guarda | `projects/tema-made-in-guarda.md` | GDA | `checkstore/made-in-guarda` | bot | sim |
+| Tema - Nuora | `projects/tema-nuora.md` | NU | `checkstore/nuoracosmetic` | bot | sim |
 
 ### Roteamento MUEL/HCL
 
@@ -44,7 +45,14 @@ O app B2B não é um projeto separado no Jira e as labels não são confiáveis:
 
 ## Composição dos times
 
-Todo time tem `<Time> · Gerente` e `<Time> · Dev`. O terceiro bot depende da seção **Revisão** do arquivo do projeto:
+Todo time tem `<Time> · Gerente` e `<Time> · Dev`. Os demais dependem da configuração do arquivo do projeto.
+
+**Designer** (seção **Design**, `designer: sim | não`, `figma: <link | não há | não informado>`):
+
+- `designer: sim` → é criado o bot `<Time> · Designer`. Depois da validação do Kariston, tarefas com impacto visual/UI passam por ele antes do Dev. Ele lê o Figma (quando existe) ou analisa o padrão do tema e entrega as **"Diretrizes de design"** ao Mestre. No time App, o foco é a UI do admin do app (Shopify Polaris / App Home) e das extensões.
+- `designer: não` → não é criado Designer; o Dev segue o padrão do tema.
+
+**Revisor** (seção **Revisão**):
 
 - `revisor: bot` → é criado o bot `<Time> · Revisor`, que revisa os PRs do Dev.
 - `revisor: github` → **não** é criado bot Revisor. O Dev solicita a revisão no PR ao usuário do GitHub indicado em `revisor_github` e avisa o Mestre.
@@ -58,7 +66,7 @@ A instrução final de cada bot é a concatenação, nesta ordem:
 1. `shared/workflow.md`
 2. `shared/idioma-e-tom.md`
 3. `shared/agentes-compartilhados.md`
-4. `roles/<papel>.md` (gerente, dev ou revisor; o revisor só existe quando `revisor: bot`)
+4. `roles/<papel>.md` (gerente, dev, designer ou revisor; o designer só existe quando `designer: sim` e o revisor só quando `revisor: bot`)
 5. `projects/<projeto>.md`
 
 Em caso de conflito, vale o mais específico: o arquivo do projeto prevalece sobre o papel, e o papel prevalece sobre o `shared/`. As regras de segurança (sem merge, sem deploy sem pedido, sem credenciais) **nunca** são sobrescritas.
@@ -79,9 +87,9 @@ Só o conteúdo da `main` vale. Branches e PRs abertos não são aplicados.
 
 ## Projeto novo (onboarding)
 
-1. Copiar `templates/project.md` para `projects/<tipo>-<cliente>.md` e preencher, incluindo a seção **Revisão** (`revisor: bot | github`, `revisor_github`, `deploy`).
-2. Adicionar a entrada do projeto no `registry.json` com os ids em `null` e o bloco `review` igual ao do arquivo do projeto. Com `revisor: github`, o campo `bots.revisor` fica ausente.
-3. Abrir PR. Depois do merge, o Mestre cria os bots do time com a instrução composta (Gerente e Dev sempre; Revisor só com `revisor: bot`), preenche os ids no `registry.json` e faz um teste rápido de ponta a ponta (Gerente lê o Jira, Dev localiza o repositório, Revisor acessa o PR ou o Dev confirma que consegue pedir review ao usuário do GitHub).
+1. Copiar `templates/project.md` para `projects/<tipo>-<cliente>.md` e preencher, incluindo a seção **Revisão** (`revisor: bot | github`, `revisor_github`, `deploy`) e a seção **Design** (`designer: sim | não`, `figma`).
+2. Adicionar a entrada do projeto no `registry.json` com os ids em `null` e os blocos `review` e `design` iguais ao do arquivo do projeto. Com `revisor: github`, o campo `bots.revisor` fica ausente; com `designer: não`, o campo `bots.designer` fica ausente.
+3. Abrir PR. Depois do merge, o Mestre cria os bots do time com a instrução composta (Gerente e Dev sempre; Designer só com `designer: sim`; Revisor só com `revisor: bot`), preenche os ids no `registry.json` e faz um teste rápido de ponta a ponta (Gerente lê o Jira, Dev localiza o repositório, Revisor acessa o PR ou o Dev confirma que consegue pedir review ao usuário do GitHub).
 
 ## Regras que valem para todos
 

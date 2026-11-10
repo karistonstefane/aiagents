@@ -6,12 +6,15 @@
 2. Ao achar uma tarefa nova, o **Gerente** envia ao **Mestre** para refinamento (link, tipo, prioridade, épico, reporter e resumo, sem segredos).
 3. O **Mestre** refina a tarefa. Para qualquer dúvida Shopify, ou para ajudar no refinamento, consulta o **Especialista Shopify**.
 4. O **Mestre** valida com o **Kariston** se a tarefa está apta a iniciar e leva as perguntas em aberto.
-5. **Somente com a aprovação do Kariston**, o Mestre envia a tarefa ao **Dev** do time, com o repositório correto e tudo o que foi decidido.
-6. O **Dev** trabalha no repositório local do Kariston: cria a branch, faz commit, push e abre o PR, seguindo as convenções de cada repositório.
+5. **Somente com a aprovação do Kariston**, o Mestre segue para a execução:
+   - se a tarefa tem **impacto visual/UI** e o projeto tem `designer: sim`, o Mestre envia primeiro ao **Designer** do time, com o link do Figma quando existir;
+   - o Designer devolve ao Mestre as **"Diretrizes de design"**. Quando for proposta sem Figma, o Mestre mostra ao Kariston para aprovação;
+   - o Mestre envia a tarefa ao **Dev** do time, com o repositório correto, tudo o que foi decidido e as Diretrizes de design (quando houver).
+6. O **Dev** trabalha no repositório local do Kariston: cria a branch, faz commit, push e abre o PR, seguindo as convenções de cada repositório e as Diretrizes de design. Diretriz pouco clara: pergunta ao Mestre.
 7. O **Dev** move a tarefa no Jira para **Code Review**, lança estimativa, worklog e comentário, e pede a revisão conforme a seção **Revisão** do projeto:
    - `revisor: bot` → pede ao bot **Revisor** do time;
    - `revisor: github` → solicita review no PR ao usuário indicado em `revisor_github` e avisa o Mestre.
-8. O revisor (bot ou pessoa no GitHub) revisa o diff, testa no preview e confere os critérios de aceite. O bot Revisor **nunca faz merge** e reporta ao Mestre (e ao Dev, se houver ajustes). Comentários do revisor do GitHub chegam ao Dev pelo Mestre ou diretamente no PR.
+8. O revisor (bot ou pessoa no GitHub) revisa o diff, testa no preview, confere os critérios de aceite e verifica se a entrega segue as **Diretrizes de design**. O bot Revisor **nunca faz merge** e reporta ao Mestre (e ao Dev, se houver ajustes). Comentários do revisor do GitHub chegam ao Dev pelo Mestre ou diretamente no PR.
 9. O **Kariston** faz o merge **manualmente**. Ninguém mais faz merge.
 10. Depois do merge, o **Dev** move a tarefa no Jira para **Q/A**.
 
@@ -34,7 +37,7 @@ O custom app B2B (`checkstore/app-b2b-connect`, pasta local `ca-herculesmueller`
 
 ## Regras fixas
 
-- O Gerente **não atua em código**.
+- O Gerente **não atua em código**. O Designer também não edita código: entrega diretrizes.
 - Merge é sempre manual, feito pelo Kariston.
 - **Nunca** fazer deploy (tema publicado, `shopify app deploy`, release etc.) sem pedido explícito do Kariston. Quem faz o deploy é quem está no campo `deploy` da seção **Revisão** do projeto.
 - Ajustes pedidos em review (do Revisor ou de colegas do Kariston no GitHub) voltam para o Dev pelo Mestre; o Dev corrige, responde cada comentário e faz push.

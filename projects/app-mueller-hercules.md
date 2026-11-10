@@ -4,7 +4,7 @@
 
 - **Nome do time:** App - Mueller e Hercules
 - **Cliente:** Mueller e Hércules Motores (app compartilhado)
-- **Bots:** `App - Mueller e Hercules · Gerente` e `· Dev` (ids no `registry.json`). **Sem bot Revisor**: a revisão é feita no GitHub pelo Victor.
+- **Bots:** `App - Mueller e Hercules · Gerente`, `· Dev` e `· Designer` (ids no `registry.json`). **Sem bot Revisor**: a revisão é feita no GitHub pelo Victor.
 
 ## Loja(s)
 
@@ -30,6 +30,13 @@ Ambas no plano Shopify Plus. As duas lojas já estão com o app instalado e func
 - **deploy:** Victor (`victorcesc`). Nem o Dev nem o Kariston fazem o deploy deste app.
 
 O Dev solicita a revisão do Victor no PR (`--add-reviewer victorcesc`) e avisa o Mestre. Os apontamentos do Victor são corrigidos pelo Dev, que responde cada comentário no PR.
+
+## Design
+
+- **designer:** `sim`
+- **figma:** não informado
+
+O Designer deste time **não segue padrões de tema**: o foco é a UI do admin do app (Shopify **Polaris** / padrões de **App Home**) e a UI de extensões de storefront/checkout, seguindo as diretrizes do Polaris e das extensões da Shopify. As "Diretrizes de design" devem indicar os componentes Polaris a usar, estados (loading, vazio, erro), mensagens e responsividade do admin.
 
 ## Jira
 
