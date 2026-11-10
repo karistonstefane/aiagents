@@ -27,9 +27,15 @@
       "forwards_to_mestre": [
         "MUEL"
       ],
+      "design": {
+        "designer": "sim",
+        "figma": "não informado"
+      },
+      "architecture": "projects/tema-mueller.arquitetura.md",
       "bots": {
         "gerente": null,
         "dev": null,
+        "designer": null,
         "revisor": null
       }
     },
@@ -47,9 +53,15 @@
       "forwards_to_mestre": [
         "HCL"
       ],
+      "design": {
+        "designer": "sim",
+        "figma": "não informado"
+      },
+      "architecture": "projects/tema-hercules.arquitetura.md",
       "bots": {
         "gerente": null,
         "dev": null,
+        "designer": null,
         "revisor": null
       }
     },
@@ -67,9 +79,16 @@
       },
       "forwards_to_mestre": [],
       "routing": "Recebe do Mestre apenas tarefas MUEL/HCL classificadas como App pelo conteudo e validadas pelo Kariston; nao encaminha tarefas por conta propria.",
+      "design": {
+        "designer": "sim",
+        "figma": "não informado",
+        "focus": "Polaris / App Home e extensoes"
+      },
+      "architecture": "projects/app-mueller-hercules.arquitetura.md",
       "bots": {
         "gerente": null,
-        "dev": null
+        "dev": null,
+        "designer": null
       }
     },
     "tema-made-in-guarda": {
@@ -86,9 +105,15 @@
       "forwards_to_mestre": [
         "GDA"
       ],
+      "design": {
+        "designer": "sim",
+        "figma": "não informado"
+      },
+      "architecture": "projects/tema-made-in-guarda.arquitetura.md",
       "bots": {
         "gerente": null,
         "dev": null,
+        "designer": null,
         "revisor": null
       }
     },
@@ -106,9 +131,15 @@
       "forwards_to_mestre": [
         "NU"
       ],
+      "design": {
+        "designer": "sim",
+        "figma": "não informado"
+      },
+      "architecture": "projects/tema-nuora.arquitetura.md",
       "bots": {
         "gerente": null,
         "dev": null,
+        "designer": null,
         "revisor": null
       }
     }

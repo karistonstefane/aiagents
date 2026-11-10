@@ -4,7 +4,7 @@
 
 - **Nome do time:** Tema - Hercules
 - **Cliente:** Hércules Motores
-- **Bots:** `Tema - Hercules · Gerente`, `· Dev`, `· Revisor` (ids no `registry.json`)
+- **Bots:** `Tema - Hercules · Gerente`, `· Dev`, `· Designer`, `· Revisor` (ids no `registry.json`)
 
 ## Loja(s)
 
@@ -24,6 +24,17 @@
 - **revisor:** `bot`
 - **revisor_github:** —
 - **deploy:** Kariston (o merge na `master` publica o tema conectado)
+
+## Design
+
+- **designer:** `sim`
+- **figma:** não informado
+
+Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Sem Figma, o Designer segue o padrão existente do tema.
+
+## Arquitetura
+
+- **Arquivo:** [`projects/tema-hercules.arquitetura.md`](./tema-hercules.arquitetura.md). Leia antes de refinar, desenhar ou implementar; o Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura.
 
 ## Jira
 

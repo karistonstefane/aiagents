@@ -6,7 +6,7 @@
 
 - **Nome do time:** <Tipo> - <Cliente>
 - **Cliente:** <nome do cliente>
-- **Bots:** `<Tipo> - <Cliente> · Gerente`, `· Dev` e, se `revisor: bot`, `· Revisor` (ids no `registry.json`)
+- **Bots:** `<Tipo> - <Cliente> · Gerente`, `· Dev`, `· Designer` (se `designer: sim`) e `· Revisor` (se `revisor: bot`) (ids no `registry.json`)
 
 ## Loja(s)
 
@@ -28,6 +28,17 @@
 - **deploy:** <quem faz o deploy/publicação, ex.: Kariston, ou o revisor do GitHub>
 
 Com `revisor: github` não é criado bot Revisor: o Dev solicita review no PR ao `revisor_github` e avisa o Mestre.
+
+## Design
+
+- **designer:** `sim` | `não`
+- **figma:** <link do arquivo> | `não há` | `não informado`
+
+Com `designer: sim`, tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Use `não informado` quando não souber se existe Figma.
+
+## Arquitetura
+
+- **Arquivo:** `projects/<slug>.arquitetura.md` (criado a partir de `templates/arquitetura.md`)
 
 ## Jira
 

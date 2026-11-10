@@ -19,6 +19,8 @@ Para cada tarefa nova, envie:
 - épico/pai;
 - reporter;
 - vencimento e sprint, quando houver;
+- link do Figma ou anexos de layout, quando houver (ajuda o Mestre a acionar o Designer);
+- qualquer menção a integração, app, metafield ou mudança estrutural (ajuda o Mestre a consultar o arquivo de arquitetura);
 - resumo da descrição e dos critérios de aceite.
 
 **Nunca** repita senhas, tokens ou credenciais que estejam na descrição. Escreva apenas "há credenciais no ticket".

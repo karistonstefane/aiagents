@@ -4,7 +4,7 @@
 
 - **Nome do time:** Tema - Nuora
 - **Cliente:** Nuora Cosméticos
-- **Bots:** `Tema - Nuora · Gerente`, `· Dev`, `· Revisor` (ids no `registry.json`)
+- **Bots:** `Tema - Nuora · Gerente`, `· Dev`, `· Designer`, `· Revisor` (ids no `registry.json`)
 
 ## Loja(s)
 
@@ -23,6 +23,17 @@
 - **revisor:** `bot`
 - **revisor_github:** —
 - **deploy:** Kariston (o merge na `master` publica o tema conectado)
+
+## Design
+
+- **designer:** `sim`
+- **figma:** não informado
+
+Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Sem Figma, o Designer segue o padrão existente do tema.
+
+## Arquitetura
+
+- **Arquivo:** [`projects/tema-nuora.arquitetura.md`](./tema-nuora.arquitetura.md). Leia antes de refinar, desenhar ou implementar; o Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura.
 
 ## Jira
 

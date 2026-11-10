@@ -4,7 +4,7 @@
 
 - **Nome do time:** Tema - Made in Guarda
 - **Cliente:** Made in Guarda
-- **Bots:** `Tema - Made in Guarda · Gerente`, `· Dev`, `· Revisor` (ids no `registry.json`)
+- **Bots:** `Tema - Made in Guarda · Gerente`, `· Dev`, `· Designer`, `· Revisor` (ids no `registry.json`)
 
 ## Loja(s)
 
@@ -23,6 +23,17 @@
 - **revisor:** `bot`
 - **revisor_github:** —
 - **deploy:** Kariston (o merge na `master` publica o tema conectado)
+
+## Design
+
+- **designer:** `sim`
+- **figma:** não informado
+
+Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kariston e antes do Dev. Sem Figma, o Designer segue o padrão existente do tema.
+
+## Arquitetura
+
+- **Arquivo:** [`projects/tema-made-in-guarda.arquitetura.md`](./tema-made-in-guarda.arquitetura.md). Leia antes de refinar, desenhar ou implementar; o Dev atualiza no mesmo ciclo do PR quando a mudança afetar a arquitetura.
 
 ## Jira
 
