@@ -32,7 +32,7 @@ Extensões em `extensions/` (na `main`):
 
 - **Theme app extension:** `b2b-company-registration` (cadastro B2B de empresas, consulta SAP para endereço).
 - **Checkout UI:** `checkout-carrier`, `checkout-cnpj-lock`, `checkout-delivery-mode`, `checkout-delivery-split`, `checkout-financial-sync`, `checkout-incoterm`, `checkout-payment-terms`, `checkout-scheduled-delivery`, `checkout-tax-display`.
-- **Customer account UI:** `customer-account-order-taxes`, `order-product-image-download`, `profile-data-change`.
+- **Customer account UI:** `customer-account-order-pdf` (botão **Baixar pedido (PDF)** no menu do pedido, HCL-235), `customer-account-order-taxes`, `order-product-image-download`, `profile-data-change`.
 - **Functions:** validações de carrinho `checkout-cnpj-validation`, `checkout-financial-status`, `checkout-sap-business-error-gate`, `minimum-price`; customização de pagamento `payment-credit-gate`.
 - **Flow triggers:** `cadastro-b2b-recebido`, `data-change-requested`.
 - **Em PR #75, ainda não mergeado:** `b2b-segment-discount` (Discount Function de **produto**, classe PRODUCT, desconto por linha; ver abaixo). O PR também muda o `minimum-price` para checar o mínimo antes dos descontos de linha.
@@ -41,6 +41,7 @@ Extensões em `extensions/` (na `main`):
 
 - **Shop metafield** `app.minimum_price` (number_decimal): preço mínimo para compra (nas duas configs).
 - **Order metafield** `app.impostos_sap` (json): impostos SAP estimados no checkout, gravado pelo webhook `orders/create`, lido na área do cliente (MUEL-260, config da Mueller).
+- **Order metafield** `app.pedido_pdf` (json, HCL-235, nas duas configs): impostos SAP em R$ por `COND_TYPE` e datas confirmadas por item, vindos dos atributos de carrinho `checkstore_pdf_itens*` (gravados pela `checkout-tax-display`, partes de até 1000 caracteres) e copiados pelo webhook `orders/create` só quando batem com o `requestKey` do `checkstore_simulate_snapshot`. Usado pelo PDF do pedido.
 - **Company Location metafields de segmento:** `checkstore.regional`, `checkstore.regiao`, `checkstore.setor`, `checkstore.equipe`, `checkstore.grupo_clientes` (vêm do SAP).
 - **Organização de vendas (VKORG):** por produto, no `product.vendor` (ex.: Hércules `4000`/`5000`, Mueller `2000`/`3000`; allowlist em `tenant.server.ts`). É a fonte usada pelo simulate SAP (um simulate por VKORG em carrinho misto) e pela function de desconto por segmento.
 - **Discount metafield** `$app:b2b-segment-discount-config` (json, PR #75): `{ version: 1, enabled, groups: [{ id, name, metafieldKey, values, percentage, salesOrgs }] }`. `enabled` é o gate da flag `SEGMENT_DISCOUNT_ENABLED` lido pela function; `salesOrgs` vazio = todas as orgs.
@@ -55,6 +56,7 @@ Extensões em `extensions/` (na `main`):
 - **Carrinhos salvos e importação de carrinho (xlsx):** `app.proxy.saved-carts*`, `app.proxy.cart-import.*`, `cart-import.server`.
 - **Materiais técnicos / imagens de produto:** `app.proxy.materiais.*`, `api.customer-account.product-image`.
 - **Alteração de dados cadastrais:** `api.customer-account.data-change` + Flow trigger.
+- **PDF do pedido (HCL-235):** `api.customer-account.order-pdf` (POST com session token devolve link assinado de 600 s; GET `?ticket=` revalida o acesso e gera o PDF com `pdfkit`, sem armazenar), `app/lib/order-pdf-*.server.ts`, `app/services/order-pdf*.server.ts`. Acesso: quem fez o pedido ou contato com papel em alguma location da empresa dona do pedido. Textos fixos e rodapé por tenant em `order-pdf-tenant.server.ts`; logo opcional em `app/assets/order-pdf/<tenant>/logo.png`.
 
 ## Decisões de arquitetura
 
@@ -67,6 +69,7 @@ Extensões em `extensions/` (na `main`):
 | 2026-11-10 | **Gate da flag dentro da function:** `enabled` na config; com a flag desligada, abrir a tela grava `enabled: false` em **todos** os descontos da function e ela para de aplicar. Com a flag ligada a tela **só lê**: reativar é ação explícita (botão **Reativar**). Rollback imediato = desativar o desconto em Admin → Descontos. | Ressalva do Revisor (desligar a flag não removia o desconto) e review round 2 do Victor (N2: a pausa só ocorre ao abrir a página e o loader reativava sozinho). | MUEL-270 / HCL-236 (PR #75) |
 | 2026-11-10 | **Pedido mínimo antes do desconto:** `minimum-price` soma `cart.lines[].cost.subtotalAmount` (antes dos descontos de linha) em vez de `cart.cost.subtotalAmount`, em **centavos inteiros** (soma em float bloqueava carrinho de exatamente o mínimo). Vale para qualquer desconto de produto, sem flag (decisão pendente com o Victor, N3). | Kariston: "Pedido Minimo deve ser checato antes." | MUEL-270 / HCL-236 (PR #75) |
 | 2026-11-10 | Percentual de 0,01 a 100 (até 2 casas), sem teto menor; sem exclusão de segmentos por desconto em dobro; impostos com valor descontado em nova tarefa. | Kariston: "Não precisa ter teto, se o usuário colocar 100% é problema dele." / "O SAP não traz descontos para a Shopify." / "Os impostos devem ser calculados com o valor já com desconto, mas vamos tratar em uma nova tarefa." | MUEL-270 / HCL-236 (PR #75) |
+| 2026-11-11 | **PDF do pedido gerado sob demanda** (`pdfkit`, nada armazenado) a partir do pedido na Admin API e do metafield `$app:pedido_pdf`; os dados SAP por item chegam ao pedido como **atributos de carrinho + cópia no webhook `orders/create`** (mesmo padrão do MUEL-260), não pela cópia nativa de metafield de carrinho (`cart_to_order_copyable`). Sem os dados (pedido anterior ou simulação sem `ok`), impostos e datas saem "A confirmar". Valores: unitário = preço da linha Shopify; total do item = qtde × unitário + impostos SAP do item; total = total Shopify + impostos SAP. Sem scopes novos. | A documentação da Shopify (use-metafield-capabilities, changelog de cópia automática, Metafields API de checkout 2026-04) não cobre checkout B2B nem pedidos que passam por revisão (draft order). Decisões do Kariston para o layout: "Alíquota: troca pelo valor do imposto em R$", "Rótulo: Vlr Unitário", "Resumo: acrescentar Demais impostos", "Frete Hercules: na linha Frete". | HCL-235 |
 
 ## Armadilhas conhecidas
 
@@ -80,6 +83,7 @@ Extensões em `extensions/` (na `main`):
 - Somas de dinheiro em Functions: usar centavos inteiros (float soma 999.9999999999999 para R$ 1.000,00).
 - QA do desconto por segmento nas lojas de produção: usar um valor de segmento que só a location de teste tenha (ex.: `regional = QA_TESTE`).
 - Function de desconto por linha (agora com `console.log` curto, ~8% de instruções): cerca de 9,6M instruções com 200 linhas (limite 11M até 200 linhas, cresce acima disso). Cuidado ao adicionar campos na input query.
+- **PDF do pedido (HCL-235):** sem `read_all_orders` (não pedido), a Admin API só lê pedidos dos últimos 60 dias; pedidos mais antigos não geram PDF. A extensão `customer-account-order-pdf` precisa ser ativada nas contas do cliente de **cada** loja, e o PDF lê e-mail e endereço do pedido (dados protegidos de clientes no Partner Dashboard).
 
 ## Histórico de mudanças relevantes
 
@@ -89,3 +93,4 @@ Extensões em `extensions/` (na `main`):
 | 2026-11-10 | Desconto por segmento B2B aberto, em ajustes do review do Victor. | MUEL-270, HCL-236 / PR #75 (não mergeado) |
 | 2026-11-10 | PR #75 ajustado com as decisões do Kariston: classe PRODUCT (por linha) com `context: { all: ALL }`, grupos por organização de vendas (`product.vendor`), gate `enabled` na function, contagem de descontos sem derrubar a tela, pedido mínimo antes dos descontos de linha. Pendente no OMS: `NETWR` líquido. | MUEL-270, HCL-236 / PR #75 (não mergeado) |
 | 2026-11-10 | Review round 2 do Victor no PR #75: pedido mínimo em centavos, loader só lê (Reativar explícito), pausa de todas as cópias com a flag off, link do menu escondido com a flag off, logs na function, remoção da migração ORDER → PRODUCT, QA com valor de segmento exclusivo. | MUEL-270, HCL-236 / PR #75 (não mergeado) |
+| 2026-11-11 | Conta do cliente: salvar pedido em PDF (nova extensão `customer-account-order-pdf`, rota `api.customer-account.order-pdf` com `pdfkit`, atributos `checkstore_pdf_itens*` na `checkout-tax-display` e metafield `$app:pedido_pdf` no webhook `orders/create`). | HCL-235 / [app-b2b-connect#80](https://github.com/checkstore/app-b2b-connect/pull/80) (não mergeado) |
