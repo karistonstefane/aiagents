@@ -142,6 +142,32 @@
         "designer": null,
         "revisor": null
       }
+    },
+    "tema-race-tech": {
+      "name": "Tema - Race Tech",
+      "file": "projects/tema-race-tech.md",
+      "jira": [
+        "RT"
+      ],
+      "review": {
+        "revisor": "bot",
+        "revisor_github": null,
+        "deploy": "Kariston"
+      },
+      "forwards_to_mestre": [
+        "RT"
+      ],
+      "design": {
+        "designer": "sim",
+        "figma": "não há"
+      },
+      "architecture": "projects/tema-race-tech.arquitetura.md",
+      "bots": {
+        "gerente": "619b8b23-8f50-4cf2-9488-6e55473b03f2",
+        "dev": "562cffcd-547b-499f-b478-f49bf0919c17",
+        "designer": "9b008c10-0c0c-4c67-80eb-ae0e161fbaf9",
+        "revisor": "fc976250-6554-4648-be5f-38460e7c41c8"
+      }
     }
   }
 }
