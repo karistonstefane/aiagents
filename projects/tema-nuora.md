@@ -10,19 +10,20 @@
 
 - **Loja:** `nuora-cosmetic.myshopify.com`
 - **Domínio:** `nuora.com.br`
-- **Tema publicado / base:** "[CS] Check V1" (Horizon 3.3.1, id 146770460714), conforme 06/11/2026
+- **Tema publicado:** "[CS] Check V3" (Horizon 3.3.1, id 150333259818), conforme 25/11/2026 (NU-67). O id 146770460714 ("[CS] Check V1" de 06/11/2026) não existe mais.
+- **Tema conectado à `master`:** um "[CS] Check V1" **não publicado** (#150218735658 ou #150255403050, não confirmado qual).
 
 ## Repositório
 
 - **Local:** `~/projects/nuoracosmetic` (`C:\Users\Kariston\projects\nuoracosmetic`)
 - **GitHub:** `checkstore/nuoracosmetic`
-- **Branch base:** `master` (o tema publicado está conectado à `master`: merge nela afeta a loja)
+- **Branch base:** `master` (conectada ao "[CS] Check V1" não publicado, não ao V3 publicado: merge nela atualiza o V1 conectado; quem publica é o Kariston)
 
 ## Revisão
 
 - **revisor:** `bot`
 - **revisor_github:** —
-- **deploy:** Kariston (o merge na `master` publica o tema conectado)
+- **deploy:** Kariston (o merge na `master` atualiza o V1 conectado; a publicação na loja é feita pelo Kariston)
 
 ## Design
 
