@@ -7,7 +7,7 @@
 - Loja da Nuora Cosméticos: `nuora-cosmetic.myshopify.com`, domínio `nuora.com.br`. Modelo: não informado.
 - Tema publicado (25/11/2026): **"[CS] Check V3"**, id **150333259818**. Foi duplicado e publicado pelo cliente a partir de um tema fora do GitHub; o conteúdo foi sincronizado na `master` pelo PR #2 (NU-67).
 - O id 146770460714 ("[CS] Check V1" em 06/11/2026) não existe mais na loja.
-- A `master` está conectada (integração GitHub da Shopify) a um tema **"[CS] Check V1"** não publicado: #150218735658 ou #150255403050 (não confirmado qual). O V3 publicado **não** está conectado ao repositório.
+- A `master` está conectada (integração GitHub da Shopify) a um tema **"[CS] Check V1"** não publicado: #150218735658 ou #150255403050 (**não confirmado** qual dos dois). O V3 publicado **não** está conectado ao repositório. Merge na `master` atualiza esse V1 conectado; quem publica é o Kariston.
 
 ## Stack e repositório
 
@@ -57,10 +57,11 @@ Atenção ao atualizar o Horizon: estas mudanças precisam ser reaplicadas.
 |---|---|---|---|
 | 2026-11-06 | GTM também na página de senha. | não informado | NU-67 |
 | 2026-11-25 | O tema publicado pelo cliente ("[CS] Check V3", #150333259818) é a fonte da verdade; seu conteúdo foi sincronizado na `master` preservando as mudanças do cliente, e o GTM da página de senha foi restaurado. | O cliente duplicou um tema fora do GitHub e publicou sem o GTM na página de senha. | NU-67 |
+| 2026-11-25 | Manter o V3 como mergeado no PR #2, aceitando a perda das edições feitas no editor do V1 conectado (#150218735658 / #150255403050, não confirmado) em `templates/page.faq.json` (commits `833caae` e `7e1e033`) e `templates/product.json` (commit `2ff1228`). | Decisão do Kariston: o V3 publicado é a fonte da verdade. | NU-67 |
 
 ## Armadilhas conhecidas
 
-- A `master` está conectada a um tema "[CS] Check V1" **não publicado**: merge na `master` atualiza esse V1, não o V3 publicado. Para chegar à loja é preciso publicar o tema conectado ou conectar o V3 à `master` (decisão do Kariston).
+- A `master` está conectada a um tema "[CS] Check V1" **não publicado** (#150218735658 / #150255403050, não confirmado): merge na `master` atualiza esse V1, não o V3 publicado. Para chegar à loja é preciso publicar o tema conectado ou conectar o V3 à `master` (decisão do Kariston).
 - Edições do cliente direto no V3 (fora do GitHub) divergem da `master` até o V3 ser conectado ao repositório.
 - Tema baseado no Horizon: preferir blocos/seções nativos e manter compatibilidade com atualizações do tema base (ver "Customizações em arquivos core do Horizon").
 
@@ -69,4 +70,4 @@ Atenção ao atualizar o Horizon: estas mudanças precisam ser reaplicadas.
 | Data | Mudança | Tarefa / PR |
 |---|---|---|
 | 2026-11-06 | GTM na página de senha. | NU-67 / PR #1 |
-| 2026-11-25 | Sincroniza o tema publicado "[CS] Check V3" na `master` (9 seções `nuora-*`, blocks `buy-now` e `product-details-button`, `nuora-buttons`, `nuora-brand.css`, `nuora-symbol.svg`, remoção de `ai_gen_block_4628687`) e restaura o GTM-KMGQRKMN no `password.liquid`. | NU-67 / [PR #2](https://github.com/checkstore/nuoracosmetic/pull/2) |
+| 2026-11-25 | Sincroniza o tema publicado "[CS] Check V3" na `master` (9 seções `nuora-*`, blocks `buy-now` e `product-details-button`, `nuora-buttons`, `nuora-brand.css`, `nuora-symbol.svg`, remoção de `ai_gen_block_4628687`) e restaura o GTM-KMGQRKMN no `password.liquid`. O merge sobrescreveu as edições do V1 em `templates/page.faq.json` (`833caae`, `7e1e033`) e `templates/product.json` (`2ff1228`); o Kariston decidiu manter o V3 como mergeado. | NU-67 / [PR #2](https://github.com/checkstore/nuoracosmetic/pull/2) |
