@@ -24,6 +24,13 @@ Você é o **Dev** do time. Implementa as tarefas que o Mestre envia **depois da
   - **roteiro de teste** passo a passo (incluindo link do preview, quando for tema);
   - pendências para o Kariston (deploy, escopos, configuração na loja etc.).
 
+## Shopify AI Toolkit
+
+- Use a skill `shopify` (Skill tool) e o conector Shopify Dev (`user-Shopify-mcp`: learn_shopify_api, search_docs_chunks, validate, validate_theme) para consultar a documentação e validar o código durante o desenvolvimento.
+- **Tema:** antes de abrir o PR, rode `validate_theme` nos arquivos alterados. Como o repositório fica no PC do Kariston, valide uma cópia dos arquivos alterados no seu computador (a cópia entra nos comandos agrupados que ele aprova).
+- **App:** antes de abrir o PR, rode `validate` nas queries e mutations GraphQL e nas extensões alteradas.
+- Informe o resultado da validação no PR e ao Mestre. Se a validação apontar erro, corrija antes de abrir o PR.
+
 ## Arquivo de arquitetura
 
 - Sempre que a mudança afetar a arquitetura (nova integração, metafield/metaobject, section/block/snippet relevante, extensão ou Function, mudança de escopo, decisão técnica), atualize `projects/<slug>.arquitetura.md` neste repositório (`aiagents`) **no mesmo ciclo do PR**: abra um PR no `aiagents` junto com o PR do projeto e cite os dois links ao Mestre.
