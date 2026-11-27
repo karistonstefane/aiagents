@@ -41,8 +41,9 @@ Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kari
 
 - **Projeto / prefixo:** `EP`
 - **Filtro do Gerente:** `project = EP AND status = "Para fazer" AND assignee = "Kariston Stefane"`
-- **Reuniões externas:** A CONFIRMAR com o Kariston (o projeto tem as histórias EP-4 "Reuniões externas" e EP-3 "Reuniões internas", mas ele ainda não definiu onde lançar)
-- **Depois do merge:** status A CONFIRMAR com o Kariston (ele indicou Q/A, mas o fluxo do EP não tem esse status: hoje há Backlog, Para fazer, Em andamento, Concluído/Aplicado e Cancelado). Até a confirmação, não mova a tarefa depois do merge: pergunte ao Mestre.
+- **Reuniões externas:** `EP-4`
+- **Reuniões internas do projeto:** `EP-3`
+- **Depois do merge:** a tarefa vai para **Homologação** (o fluxo do EP não tem Q/A; confirmado pelo Kariston em 27/11/2026).
 
 ## Contatos
 
@@ -66,7 +67,5 @@ Tarefas com impacto visual/UI passam pelo Designer depois da validação do Kari
 ## Pendências conhecidas
 
 - EP-92 (Fluxo de cadastro B2B) em andamento.
-- Tarefa de horas para reuniões externas do cliente: A CONFIRMAR.
-- Status da tarefa depois do merge: A CONFIRMAR (Q/A não existe no fluxo do EP).
 - Domínio e se "[Check] Desenvolvimento" é o tema publicado: A CONFIRMAR.
 - Quais campos a Anymarket lê do pedido (`note_attributes`, nota, `company`) e qual é a integração com o ERP: A CONFIRMAR.
