@@ -189,10 +189,10 @@
       },
       "architecture": "projects/tema-espaco-prime.arquitetura.md",
       "bots": {
-        "gerente": null,
-        "dev": null,
-        "designer": null,
-        "revisor": null
+        "gerente": "05d94d88-69ce-4d63-ba04-a71a00791ed0",
+        "dev": "f06f78de-3e3c-4646-b123-02f84b0ade4a",
+        "designer": "a522b907-9a6e-4229-bb1e-5bb4463b244e",
+        "revisor": "1c99e6a5-ad67-4b14-a4a9-ef95cd2f5cc4"
       }
     }
   }
