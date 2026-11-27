@@ -28,7 +28,9 @@ aiagents/
 │   ├── tema-made-in-guarda.md
 │   ├── tema-made-in-guarda.arquitetura.md
 │   ├── tema-nuora.md
-│   └── tema-nuora.arquitetura.md
+│   ├── tema-nuora.arquitetura.md
+│   ├── tema-espaco-prime.md
+│   └── tema-espaco-prime.arquitetura.md
 ├── templates/
 │   ├── project.md             # modelo para projeto novo
 │   └── arquitetura.md         # modelo do arquivo de arquitetura do projeto
@@ -44,6 +46,7 @@ aiagents/
 | App - Mueller e Hercules | `projects/app-mueller-hercules.md` | MUEL + HCL (só tarefas classificadas como App pelo Mestre) | `checkstore/app-b2b-connect` | GitHub: `victorcesc` | sim (Polaris) |
 | Tema - Made in Guarda | `projects/tema-made-in-guarda.md` | GDA | `checkstore/made-in-guarda` | bot | sim |
 | Tema - Nuora | `projects/tema-nuora.md` | NU | `checkstore/nuoracosmetic` | bot | sim |
+| Tema - Espaço Prime | `projects/tema-espaco-prime.md` | EP | `checkstore/espaco-prime` | bot | sim |
 
 ### Roteamento MUEL/HCL
 
